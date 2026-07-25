@@ -611,3 +611,30 @@ class Call(PyTgCalls):
                         await self.stop_stream(update.chat_id)
 
 SHUKLA = Call()
+
+
+async def register_bot_commands():
+    """Register the bot command list with Telegram."""
+    from pyrogram.types import BotCommand
+    commands = [
+        BotCommand("start", "Start the bot"),
+        BotCommand("help", "Get help"),
+        BotCommand("play", "Play a song"),
+        BotCommand("vplay", "Play a video"),
+        BotCommand("stop", "Stop playback"),
+        BotCommand("pause", "Pause playback"),
+        BotCommand("resume", "Resume playback"),
+        BotCommand("skip", "Skip current song"),
+        BotCommand("queue", "Show queue"),
+        BotCommand("end", "End the stream"),
+        BotCommand("ping", "Check bot latency"),
+        BotCommand("song", "Download a song"),
+        BotCommand("search", "Search YouTube"),
+        BotCommand("lyrics", "Get lyrics"),
+        BotCommand("stats", "Bot statistics"),
+    ]
+    try:
+        await app.set_bot_commands(commands)
+        LOGGER(__name__).info("Bot commands registered successfully.")
+    except Exception as e:
+        LOGGER(__name__).warning(f"Could not register bot commands: {e}")
