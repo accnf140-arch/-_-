@@ -21,22 +21,42 @@ from SHUKLAMUSIC.core.call import SHUKLA
 from SHUKLAMUSIC.utils import bot_sys_stats
 from SHUKLAMUSIC.utils.decorators.language import language
 from SHUKLAMUSIC.utils.inline import supp_markup
-from config import BANNED_USERS, PING_VIDEO_URL
+from config import BANNED_USERS, PING_IMG_URL
 import random
 
+# Always show this thumbnail on ping
+_PING_THUMB = "https://i.ibb.co/TMfqTY3f/rose-thumb.jpg"
 
 @app.on_message(filters.command("ping", prefixes=["/"]) & ~BANNED_USERS)
 @language
 async def ping_com(client, message: Message, _):
     start = datetime.now()
-    response = await message.reply_animation(
-        PING_VIDEO_URL,
-        caption=_["ping_1"].format(app.mention),
-    )
+    # Send photo with the Rose thumbnail and loading caption
+    try:
+        response = await message.reply_photo(
+            _PING_THUMB,
+            caption=_["ping_1"].format(app.mention),
+        )
+    except Exception:
+        # Fallback: if ibb URL fails, use PING_IMG_URL from config
+        try:
+            response = await message.reply_photo(
+                PING_IMG_URL,
+                caption=_["ping_1"].format(app.mention),
+            )
+        except Exception:
+            response = await message.reply_text(_["ping_1"].format(app.mention))
+
     pytgping = await SHUKLA.ping()
     UP, CPU, RAM, DISK = await bot_sys_stats()
     resp = (datetime.now() - start).microseconds / 1000
-    await response.edit_text(
-        _["ping_2"].format(resp, app.mention, UP, RAM, CPU, DISK, pytgping),
-        reply_markup=supp_markup(_),
-    )
+    try:
+        await response.edit_caption(
+            _["ping_2"].format(resp, app.mention, UP, RAM, CPU, DISK, pytgping),
+            reply_markup=supp_markup(_),
+        )
+    except Exception:
+        await response.edit_text(
+            _["ping_2"].format(resp, app.mention, UP, RAM, CPU, DISK, pytgping),
+            reply_markup=supp_markup(_),
+        )

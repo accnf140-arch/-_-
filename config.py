@@ -108,6 +108,9 @@ SHASHANK_IMG = getenv("SHASHANK_IMG", "https://files.catbox.moe/ky6ln3.jpg").spl
 
 # Rotating start photos (used by start command and home callbacks)
 START_PICS = [
+    "https://i.ibb.co/TMfqTY3f/rose-thumb.jpg",
+    "https://i.ibb.co/TMfqTY3f/rose-thumb.jpg",
+    "https://i.ibb.co/TMfqTY3f/rose-thumb.jpg",
     "https://files.catbox.moe/ky6ln3.jpg",
     "https://files.catbox.moe/booqz5.jpg",
     "https://files.catbox.moe/qlq89x.jpg",
@@ -121,7 +124,7 @@ START_PICS = [
 PING_VIDEO_URL = getenv("PING_VIDEO_URL", "https://files.catbox.moe/lltsdr.mp4")
 
 START_IMG_URL = getenv("START_IMG_URL", "https://files.catbox.moe/cfo239.jpg")
-PING_IMG_URL = getenv("PING_IMG_URL", "https://files.catbox.moe/12ljuz.jpg")
+PING_IMG_URL = getenv("PING_IMG_URL", "https://i.ibb.co/TMfqTY3f/rose-thumb.jpg")
 PLAYLIST_IMG_URL = getenv("PLAYLIST_IMG_URL", "https://files.catbox.moe/booqz5.jpg")
 STATS_IMG_URL = getenv("STATS_IMG_URL", "https://files.catbox.moe/qlq89x.jpg")
 TELEGRAM_AUDIO_URL = getenv("TELEGRAM_AUDIO_URL", "https://files.catbox.moe/ifgkkl.jpg")

@@ -50,12 +50,13 @@ def close_markup(_):
 
 
 def supp_markup(_):
+    from config import SUPPORT_CHANNEL
     upl = InlineKeyboardMarkup(
         [
             [
                 InlineKeyboardButton(
                     text="✨ ᴜᴘᴅᴀᴛᴇ ᴄʜᴀɴɴᴇʟ",
-                    url=SUPPORT_CHAT,
+                    url=SUPPORT_CHANNEL,
                     style=ButtonStyle.SUCCESS,
                 ),
                 InlineKeyboardButton(

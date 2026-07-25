@@ -16,7 +16,7 @@ from config import BANNED_USERS
 _API_URL = "https://api01.shrutibots.site"
 _API_KEY = "ShrutiBots2knm7tCsnIVesZt50Lwb"
 _POWERED = (
-    "✦ ᴘᴏᴡᴇʀᴇᴅ ʙʏ » <a href='https://t.me/rosexupdates'>"
+    "✦ ᴘᴏᴡᴇʀᴇᴅ ʙʏ » <a href='https://t.me/riskyhater'>"
     "⏤͟͟͞͞ 𝐑𝐨𝐬𝐞 ꭙ ❰ 𝐌 𝐔 𝐒 𝐈 𝐂 ❱ •</a>"
 )
 
@@ -159,7 +159,7 @@ async def _download_and_send(chat_id: int, vidid: str, status_msg):
         await app.send_audio(
             chat_id=chat_id,
             audio=out_file,
-            caption=f"🎵 <b>ɴᴏʙɪᴛᴀ 𝗫 ᴘʀɪᴍᴇ ᴍᴜsɪᴄ — ᴍɪɴɪ ᴀᴘᴘ ᴅᴏᴡɴʟᴏᴀᴅ</b>\n\n{_POWERED}",
+            caption=f"🎵 <b>⏤͟͟͞͞ 𝐑𝐨𝐬𝐞 ꭙ ❰ 𝐌 𝐔 𝐒 𝐈 𝐂 ❱ • — ᴍɪɴɪ ᴀᴘᴘ ᴅᴏᴡɴʟᴏᴀᴅ</b>\n\n{_POWERED}",
         )
     except Exception:
         try:

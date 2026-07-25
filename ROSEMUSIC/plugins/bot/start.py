@@ -59,6 +59,9 @@ welcome_db = db.welcome_config
 #        ROSE MUSIC BOT BRANDING
 # ================================
 ROSE_PICS = [
+    "https://i.ibb.co/TMfqTY3f/rose-thumb.jpg",
+    "https://i.ibb.co/TMfqTY3f/rose-thumb.jpg",
+    "https://i.ibb.co/TMfqTY3f/rose-thumb.jpg",
     "https://files.catbox.moe/ky6ln3.jpg",
     "https://files.catbox.moe/booqz5.jpg",
     "https://files.catbox.moe/qlq89x.jpg",
