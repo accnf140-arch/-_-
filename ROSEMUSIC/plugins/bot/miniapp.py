@@ -16,8 +16,8 @@ from config import BANNED_USERS
 _API_URL = "https://api01.shrutibots.site"
 _API_KEY = "ShrutiBots2knm7tCsnIVesZt50Lwb"
 _POWERED = (
-    "✦ ᴘᴏᴡᴇʀᴇᴅ ʙʏ » <a href='https://t.me/II_NOBITA_X_PRIME_II'>"
-    "𝚴 𝐎 𝐁 𝚰 𝐓 𝚲 𝐗 𝚸 𝐑 𝐈 𝐌 𝐄❤️‍🔥</a>"
+    "✦ ᴘᴏᴡᴇʀᴇᴅ ʙʏ » <a href='https://t.me/rosexupdates'>"
+    "⏤͟͟͞͞ 𝐑𝐨𝐬𝐞 ꭙ ❰ 𝐌 𝐔 𝐒 𝐈 𝐂 ❱ •</a>"
 )
 
 

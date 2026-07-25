@@ -151,12 +151,12 @@ async def get_thumb(videoid: str) -> str:
     draw.text((TITLE_X, TITLE_Y), trim_to_width(title, title_font, MAX_TITLE_WIDTH), fill="black", font=title_font)
     draw.text((META_X, META_Y), f"YouTube | {views}", fill="black", font=regular_font)
 
-    # MADE BY-NOBITAXPRIME watermark — right bottom corner
+    # ROSE X MUSIC watermark — right bottom corner
     try:
         brand_font = ImageFont.truetype("SHUKLAMUSIC/assets/assets/font2.ttf", 22)
     except OSError:
         brand_font = regular_font
-    brand_text = "MADE BY-NOBITAXPRIME\u2764\ufe0f\u200d\U0001f525"
+    brand_text = "ROSE X MUSIC\u2764\ufe0f\u200d\U0001f525"
     brand_w = int(brand_font.getlength(brand_text)) if hasattr(brand_font, 'getlength') else 220
     brand_x = 1280 - brand_w - 18
     brand_y = 720 - 42
