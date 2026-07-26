@@ -135,8 +135,8 @@ async def inline_gen_qr(client, inline_query: InlineQuery):
 
     results = [
         InlineQueryResultPhoto(
-            photo_url="https://files.catbox.moe/5go4t6.jpg",
-            thumb_url="https://files.catbox.moe/5go4t6.jpg",
+            photo_url="https://files.catbox.moe/395pae.jpg",
+            thumb_url="https://files.catbox.moe/395pae.jpg",
             title=f"Generate ₹{amount:.2f} Payment QR",
             description=f"UPI: {upi_id}",
             caption=caption,
