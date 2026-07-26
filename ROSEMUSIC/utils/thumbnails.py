@@ -73,6 +73,11 @@ async def get_thumb(videoid: str) -> str:
             "no_warnings": True,
             "skip_download": True,
             "noplaylist": True,
+            "extractor_args": {
+                "youtube": {
+                    "player_client": ["android", "ios"],
+                }
+            },
         }
         with yt_dlp.YoutubeDL(opts) as ydl:
             return ydl.extract_info(
