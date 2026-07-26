@@ -25,7 +25,7 @@ from config import BANNED_USERS, PING_IMG_URL
 import random
 
 # Always show this thumbnail on ping
-_PING_THUMB = "https://i.ibb.co/TMfqTY3f/rose-thumb.jpg"
+_PING_THUMB = "https://files.catbox.moe/395pae.jpg"
 
 @app.on_message(filters.command("ping", prefixes=["/"]) & ~BANNED_USERS)
 @language

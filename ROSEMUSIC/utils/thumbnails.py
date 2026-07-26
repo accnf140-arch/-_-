@@ -24,6 +24,8 @@ from config import YOUTUBE_IMG_URL
 CACHE_DIR = "cache"
 os.makedirs(CACHE_DIR, exist_ok=True)
 _FALLBACK_THUMB = "SHUKLAMUSIC/assets/fallback_thumb.jpg"
+_ROSE_BG_URL = "https://files.catbox.moe/395pae.jpg"
+_ROSE_BG_CACHE = os.path.join(CACHE_DIR, "rose_bg_base.jpg")
 
 PANEL_W, PANEL_H = 763, 545
 PANEL_X = (1280 - PANEL_W) // 2
@@ -103,25 +105,25 @@ async def get_thumb(videoid: str) -> str:
     is_live = not duration or str(duration).strip().lower() in {"", "live", "live now"}
     duration_text = "Live" if is_live else duration or "Unknown Mins"
 
-    # Download thumbnail
+    # Always use the Rose X Music branded background image
     thumb_path = os.path.join(CACHE_DIR, f"thumb{videoid}.png")
-    if thumbnail:
+    if not os.path.exists(_ROSE_BG_CACHE) or os.path.getsize(_ROSE_BG_CACHE) == 0:
         try:
             async with aiohttp.ClientSession() as session:
-                async with session.get(thumbnail) as resp:
+                async with session.get(_ROSE_BG_URL) as resp:
                     if resp.status == 200:
-                        async with aiofiles.open(thumb_path, "wb") as f:
+                        async with aiofiles.open(_ROSE_BG_CACHE, "wb") as f:
                             await f.write(await resp.read())
         except Exception:
             pass
 
-    # If download failed or no URL → use fallback as base
-    if not os.path.exists(thumb_path) or os.path.getsize(thumb_path) == 0:
+    # Use Rose bg for base; fall back to fallback asset if download failed
+    bg_source = _ROSE_BG_CACHE if (os.path.exists(_ROSE_BG_CACHE) and os.path.getsize(_ROSE_BG_CACHE) > 0) else _FALLBACK_THUMB
+    try:
         import shutil
-        try:
-            shutil.copy(_FALLBACK_THUMB, thumb_path)
-        except Exception:
-            return _FALLBACK_THUMB
+        shutil.copy(bg_source, thumb_path)
+    except Exception:
+        return bg_source
 
     # Create base image
     base = Image.open(thumb_path).resize((1280, 720)).convert("RGBA")
