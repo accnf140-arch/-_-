@@ -107,7 +107,6 @@ async def get_thumb(videoid: str) -> str:
 
     # Download Rose X Music branded background image
     thumb_path = os.path.join(CACHE_DIR, f"thumb{videoid}.png")
-    yt_thumb_path = os.path.join(CACHE_DIR, f"yt_{videoid}.jpg")
 
     if not os.path.exists(_ROSE_BG_CACHE) or os.path.getsize(_ROSE_BG_CACHE) == 0:
         try:
@@ -119,18 +118,7 @@ async def get_thumb(videoid: str) -> str:
         except Exception:
             pass
 
-    # Download actual YouTube thumbnail to use as the song art panel
-    if thumbnail and not os.path.exists(yt_thumb_path):
-        try:
-            async with aiohttp.ClientSession() as session:
-                async with session.get(thumbnail) as resp:
-                    if resp.status == 200:
-                        async with aiofiles.open(yt_thumb_path, "wb") as f:
-                            await f.write(await resp.read())
-        except Exception:
-            pass
-
-    # Use Rose bg for base background; fall back to fallback asset if download failed
+    # Use Rose bg for both background and panel art
     bg_source = _ROSE_BG_CACHE if (os.path.exists(_ROSE_BG_CACHE) and os.path.getsize(_ROSE_BG_CACHE) > 0) else _FALLBACK_THUMB
     try:
         import shutil
@@ -138,7 +126,7 @@ async def get_thumb(videoid: str) -> str:
     except Exception:
         return bg_source
 
-    # Create base image (Rose BG for background blur)
+    # Create base image (Rose BG)
     base = Image.open(thumb_path).resize((1280, 720)).convert("RGBA")
     bg = ImageEnhance.Brightness(base.filter(ImageFilter.BoxBlur(10))).enhance(0.6)
 
@@ -158,14 +146,8 @@ async def get_thumb(videoid: str) -> str:
     except OSError:
         title_font = regular_font = ImageFont.load_default()
 
-    # Use actual YouTube thumbnail as song art; fall back to Rose BG if not available
-    if os.path.exists(yt_thumb_path) and os.path.getsize(yt_thumb_path) > 0:
-        try:
-            thumb = Image.open(yt_thumb_path).resize((THUMB_W, THUMB_H)).convert("RGBA")
-        except Exception:
-            thumb = base.resize((THUMB_W, THUMB_H))
-    else:
-        thumb = base.resize((THUMB_W, THUMB_H))
+    # Always use Rose BG image as the panel song art
+    thumb = base.resize((THUMB_W, THUMB_H))
     tmask = Image.new("L", thumb.size, 0)
     ImageDraw.Draw(tmask).rounded_rectangle((0, 0, THUMB_W, THUMB_H), 20, fill=255)
     bg.paste(thumb, (THUMB_X, THUMB_Y), tmask)
