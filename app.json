@@ -6,7 +6,7 @@
     "python3",
     "telegram",
     "bot",
-    "StrangerMusic",
+    "Rose X Music",
     "MusicBot",
     "telegram-bot",
     "pyrogram"
@@ -29,7 +29,7 @@
     },
     "MONGO_DB_URI": {
       "description": "Get a mongodb url from https://cloud.mongodb.com.",
-      "value": "mongodb+srv://SHASHANK:STRANGER@shashank.uj7lold.mongodb.net/?retryWrites=true&w=majority",
+      "value": "mongodb+srv://username:password@cluster.mongodb.net/?retryWrites=true&w=majority",
       "required": true
     },
     "OWNER_ID": {

@@ -1,6 +1,6 @@
 # -----------------------------------------------
-# 🔸 StrangerMusic Project
-# 🔹 Developed & Maintained by: Shashank Shukla (https://github.com/itzshukla)
+# 🔸 Rose X Music Project
+# 🔹 Developed & Maintained by: Rose X Music (https://t.me/rosexupdates)
 # 📅 Copyright © 2022 – All Rights Reserved
 #
 # 📖 License:
@@ -9,7 +9,7 @@
 # Commercial use, redistribution, or removal of this notice is strictly prohibited
 # without prior written permission from the author.
 #
-# ❤️ Made with dedication and love by ItzShukla
+# ❤️ Made with ❤️ for Rose X Music Community
 # -------------------------------------
 
 import math
@@ -49,29 +49,29 @@ def stream_markup_timer(_, chat_id, played, dur, videoid=None, autoplay=False):
     
     umm = math.floor(percentage)
     if 0 <= umm < 8:
-        bar = "𝚴❤️‍🔥···········"
+        bar = "𝐑❤️‍🔥···········"
     elif 8 <= umm < 17:
-        bar = "𝚴𝐎❤️‍🔥··········"
+        bar = "𝐑𝐎❤️‍🔥··········"
     elif 17 <= umm < 25:
-        bar = "𝚴𝐎𝐁❤️‍🔥·········"
+        bar = "𝐑𝐎𝐒❤️‍🔥·········"
     elif 25 <= umm < 33:
-        bar = "𝚴𝐎𝐁𝚰❤️‍🔥········"
+        bar = "𝐑𝐎𝐒𝐄❤️‍🔥········"
     elif 33 <= umm < 42:
-        bar = "𝚴𝐎𝐁𝚰𝐓❤️‍🔥·······"
+        bar = "𝐑𝐎𝐒𝐄𝐗❤️‍🔥·······"
     elif 42 <= umm < 50:
-        bar = "𝚴𝐎𝐁𝚰𝐓𝚲❤️‍🔥······"
+        bar = "𝐑𝐎𝐒𝐄𝐗𝐌❤️‍🔥······"
     elif 50 <= umm < 58:
-        bar = "𝚴𝐎𝐁𝚰𝐓𝚲𝐗❤️‍🔥·····"
+        bar = "𝐑𝐎𝐒𝐄𝐗𝐌𝐔❤️‍🔥·····"
     elif 58 <= umm < 67:
-        bar = "𝚴𝐎𝐁𝚰𝐓𝚲𝐗𝚸❤️‍🔥····"
+        bar = "𝐑𝐎𝐒𝐄𝐗𝐌𝐔𝐒❤️‍🔥····"
     elif 67 <= umm < 75:
-        bar = "𝚴𝐎𝐁𝚰𝐓𝚲𝐗𝚸𝐑❤️‍🔥···"
+        bar = "𝐑𝐎𝐒𝐄𝐗𝐌𝐔𝐒𝐈❤️‍🔥···"
     elif 75 <= umm < 83:
-        bar = "𝚴𝐎𝐁𝚰𝐓𝚲𝐗𝚸𝐑𝐈❤️‍🔥··"
+        bar = "𝐑𝐎𝐒𝐄𝐗𝐌𝐔𝐒𝐈𝐂❤️‍🔥··"
     elif 83 <= umm < 92:
-        bar = "𝚴𝐎𝐁𝚰𝐓𝚲𝐗𝚸𝐑𝐈𝐌❤️‍🔥·"
+        bar = "𝐑𝐎𝐒𝐄𝐗𝐌𝐔𝐒𝐈𝐂🌹❤️‍🔥·"
     else:
-        bar = "𝚴𝐎𝐁𝚰𝐓𝚲𝐗𝚸𝐑𝐈𝐌𝐄❤️‍🔥"
+        bar = "𝐑𝐎𝐒𝐄𝐗𝐌𝐔𝐒𝐈𝐂🌹•❤️‍🔥"
     buttons = [
         [
             InlineKeyboardButton(

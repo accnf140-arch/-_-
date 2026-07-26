@@ -1,6 +1,6 @@
 # -----------------------------------------------
-# 🔸 StrangerMusic Project
-# 🔹 Developed & Maintained by: Shashank Shukla (https://github.com/itzshukla)
+# 🔸 Rose X Music Project
+# 🔹 Developed & Maintained by: Rose X Music (https://t.me/rosexupdates)
 # 📅 Copyright © 2022 – All Rights Reserved
 #
 # 📖 License:
@@ -9,7 +9,7 @@
 # Commercial use, redistribution, or removal of this notice is strictly prohibited
 # without prior written permission from the author.
 #
-# ❤️ Made with dedication and love by ItzShukla
+# ❤️ Made with ❤️ for Rose X Music Community
 # -----------------------------------------------
 from pyrogram.types import Message
 import random
@@ -48,7 +48,7 @@ def gay_calculator_command(client, message: Message):
 @app.on_message(filters.command("logo"))
 async def logo(app, msg: Message):
     if len(msg.command) == 1:
-       return await msg.reply_text("Usage:\n\n /logo STRANGER")
+       return await msg.reply_text("Usage:\n\n /logo ROSEXMUSIC")
     logo_name = msg.text.split(" ", 1)[1]
     API = f"https://api.sdbots.tech/logohq?text={logo_name}"
     req = requests.get(API).url
@@ -58,7 +58,7 @@ async def logo(app, msg: Message):
 @app.on_message(filters.command("animelogo"))
 async def logo(app, msg: Message):
     if len(msg.command) == 1:
-       return await msg.reply_text("Usage:\n\n /animelogo STRANGER")
+       return await msg.reply_text("Usage:\n\n /animelogo ROSEXMUSIC")
     logo_name = msg.text.split(" ", 1)[1]
     API = f"https://api.sdbots.tech/anime-logo?name={logo_name}"
     req = requests.get(API).url

@@ -677,7 +677,7 @@ https://t.me/riskyhater
 
 ### 🌟 Base Project
 
-• StrangerMusic
+• Rose X Music
 
 • ShuklaMusic
 

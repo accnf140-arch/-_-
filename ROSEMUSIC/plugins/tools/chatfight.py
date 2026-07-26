@@ -1,5 +1,5 @@
 # -----------------------------------------------
-# 🔸 StrangerMusic Project — ChatFight Mini-Games
+# 🔸 Rose X Music Project — ChatFight Mini-Games
 # 🔹 Word / Emoji / Flag guessing games with MongoDB leaderboard
 # 🔹 Adapted from SUDEEPBOTS chatfight.py for SHUKLAMUSIC
 # -----------------------------------------------

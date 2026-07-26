@@ -1,5 +1,5 @@
 # -----------------------------------------------
-# 🔸 NOBITA X PRIME — Heartbeat Plugin
+# 🔸 Rose X Music — Heartbeat Plugin
 # 🔹 Sends a heartbeat ping to LOGGER_ID every 5 min
 #    to keep the bot alive and confirm it's running.
 # -----------------------------------------------

@@ -1,7 +1,7 @@
 # -----------------------------------------------
-# 🔸 StrangerMusic Project
-# 🔹 Developed & Maintained by: Shukla (https://github.com/itzshukla)
-# ❤️ Made with dedication and love by ItzShukla
+# 🔸 Rose X Music Project
+# 🔹 Developed & Maintained by: Shukla (https://github.com/rosexupdates)
+# ❤️ Made with ❤️ for Rose X Music Community
 # -----------------------------------------------
 from SHUKLAMUSIC import app
 from pyrogram.errors import RPCError

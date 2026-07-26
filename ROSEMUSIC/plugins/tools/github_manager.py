@@ -1,5 +1,5 @@
 # -----------------------------------------------
-# 🔸 StrangerMusic Project — GitHub Management
+# 🔸 Rose X Music Project — GitHub Management
 # 🔹 Convert public repos to ZIP, push ZIPs to a repo, and manage repos
 # 🔹 Uses the GitHub REST API only (no third-party GitHub library)
 # -----------------------------------------------

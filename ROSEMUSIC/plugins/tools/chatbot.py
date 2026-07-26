@@ -1,5 +1,5 @@
 # -----------------------------------------------
-# 🔸 StrangerMusic Project — MongoDB ChatBot (No External API)
+# 🔸 Rose X Music Project — MongoDB ChatBot (No External API)
 # 🔹 Keyword-trained auto-reply system, fully stored & matched in MongoDB
 # -----------------------------------------------
 import re

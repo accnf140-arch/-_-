@@ -1,5 +1,5 @@
 # -----------------------------------------------
-# 🔸 StrangerMusic Project — Group Games Plugin
+# 🔸 Rose X Music Project — Group Games Plugin
 # 🔹 Number Bomb, Dice Battle, Russian Roulette
 # -----------------------------------------------
 import asyncio

@@ -1,6 +1,6 @@
 # -----------------------------------------------
-# 🔸 SHUKLAMUSIC — Mini App (Web App) Handler
-# 🔹 Receives data from the Nobita Music mini app
+# 🔸 Rose X Music — Mini App (Web App) Handler
+# 🔹 Receives data from the Rose X Music mini app
 #    and sends the requested song to the user.
 # -----------------------------------------------
 import json
@@ -181,7 +181,7 @@ _has_web_app_data = filters.create(lambda _, __, m: bool(getattr(m, "web_app_dat
 @app.on_message(_has_web_app_data & filters.private & ~BANNED_USERS)
 async def handle_mini_app_data(client, message: Message):
     """
-    Receives data submitted from the Nobita Music mini app and
+    Receives data submitted from the Rose X Music mini app and
     downloads + sends the requested song to the user.
     """
     raw = message.web_app_data.data if message.web_app_data else ""

@@ -2,7 +2,7 @@
 # 🔸 ShrutiMusic Api Youtube.py file.
 # 🔹 Developed & Maintained by: Nand Yaduvanshi (https://github.com/NoxxOP)
 # 📅 Copyright © 2025 – All Rights Reserved
-# ❤️ Made with dedication and love by NoxxOP & itzshukla
+# ❤️ Made with dedication and love by NoxxOP & rosexupdates
 # ---------------------------------------------------------------
 
 import asyncio

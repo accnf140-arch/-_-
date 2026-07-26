@@ -1,6 +1,6 @@
 # -----------------------------------------------
-# 🔸 StrangerMusic Project
-# 🔹 Developed & Maintained by: Shashank Shukla (https://github.com/itzshukla)
+# 🔸 Rose X Music Project
+# 🔹 Developed & Maintained by: Rose X Music (https://t.me/rosexupdates)
 # 📅 Copyright © 2022 – All Rights Reserved
 #
 # 📖 License:
@@ -9,7 +9,7 @@
 # Commercial use, redistribution, or removal of this notice is strictly prohibited
 # without prior written permission from the author.
 #
-# ❤️ Made with dedication and love by ItzShukla
+# ❤️ Made with ❤️ for Rose X Music Community
 # -----------------------------------------------
 
 from pyrogram.types import InlineKeyboardButton, WebAppInfo
@@ -102,7 +102,7 @@ def private_panel(_):
             ),
         ],
     ]
-    # NOBITA MUSIC APP button — WebApp when URL configured, URL button otherwise
+    # ROSE X MUSIC APP button — WebApp when URL configured, URL button otherwise
     if config.MINIAPP_URL:
         buttons.append([
             InlineKeyboardButton(
