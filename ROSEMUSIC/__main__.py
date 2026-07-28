@@ -15,6 +15,7 @@ from SHUKLAMUSIC.plugins import ALL_MODULES
 from SHUKLAMUSIC.utils.database import get_banned_users, get_gbanned
 from SHUKLAMUSIC.plugins.tools.vclogger import initialize_vc_logger
 from SHUKLAMUSIC.core.commands import register_bot_commands
+from SHUKLAMUSIC.plugins.sudo.clearcache import start_autoclear_scheduler
 
 
 # ── Keep-alive web server ─────────────────────────────────────────────────────
@@ -71,6 +72,8 @@ async def init():
         pass
     await SHUKLA.decorators()
     await initialize_vc_logger()
+    start_autoclear_scheduler()
+    LOGGER("SHUKLAMUSIC").info("Auto-clean scheduler started (every 30 min).")
     await start_keepalive()
     LOGGER("SHUKLAMUSIC").info("Bot fully started!")
     await idle()
