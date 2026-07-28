@@ -112,12 +112,12 @@ class Userbot(Client):
                     started += 1
 
         if started == 0:
-            LOGGER(__name__).error(
-                "No assistants could start. "
-                "Check STRING_SESSION — it may be duplicated or expired. "
-                "Generate a new one with @StringFatherBot."
+            LOGGER(__name__).warning(
+                "⚠️ No assistants started — STRING_SESSION may be duplicated (running on two "
+                "servers) or expired. Voice-chat features will be unavailable until a valid "
+                "session is set. Generate a new one with @StringFatherBot and update "
+                "STRING_SESSION in your environment variables."
             )
-            exit()
 
     async def stop(self):
         LOGGER(__name__).info("Stopping Assistants...")
