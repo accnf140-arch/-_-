@@ -1,0 +1,70 @@
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🌹 ROSE X MUSIC — UPDATE v2.0
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🔧 Internal System Upgrade — Full Bug Fix & Stability Release
+
+After deep internal review, v2.0 brings a full engine overhaul focused on
+crash prevention, cleaner error handling, and leaner code. No features were
+removed — everything is tighter and more stable.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🐛 BUG FIXES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✅ Fixed: Bot could silently crash if MongoDB connection failed — now shows
+   a clear error with the exact reason and stops cleanly instead of hanging.
+
+✅ Fixed: Heroku module was always initializing even on non-Heroku servers
+   due to a missing () — wasted startup time, now correctly skipped on Replit.
+
+✅ Fixed: Admin check in log group could incorrectly crash the bot on
+   broadcast channels — now logs a warning and continues gracefully.
+
+✅ Fixed: All bare except: blocks replaced with specific exception catching —
+   errors are now logged with type & message so issues are diagnosable.
+
+✅ Fixed: Assistant stop() silently swallowed all errors — each assistant
+   now logs its own shutdown status individually.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⚡ IMPROVEMENTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🚀 Removed 630 lines of duplicate dead code — the entire Call class was
+   copy-pasted across two files. Now it lives in one place only, cutting
+   memory usage and preventing future bugs from diverging copies.
+
+🚀 MongoDB connection now has a 10-second timeout — bot won't hang
+   indefinitely on a bad URI at startup.
+
+🚀 Startup ban-list loading is now non-fatal — if the DB is slow at
+   boot, the bot still starts instead of crashing.
+
+🚀 No-STRING-SESSION check now uses SystemExit(1) instead of exit() —
+   cleaner shutdown signal, no zombie processes.
+
+🚀 All error messages now include exception class + message — makes
+   debugging from logs much faster.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📦 AFFECTED FILES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+• core/bot.py      — smarter admin check, no false SystemExit on channels
+• core/commands.py — stripped to essentials (640 → 45 lines)
+• core/mongo.py    — proper exception handling + connection timeout
+• core/git.py      — BaseException → Exception, cleaner messages
+• core/userbot.py  — per-assistant shutdown logging
+• misc.py          — is_heroku() fix, Exception catch with message
+• __main__.py      — clean error handling, non-fatal ban-list load
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🔗 SOURCE CODE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+GitHub → https://github.com/accnf140-arch/-_-
+Support → https://t.me/rosexsupports
+Updates → https://t.me/rosexupdates
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
