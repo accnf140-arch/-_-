@@ -43,7 +43,19 @@ class SHUKLA(Client):
         )
 
     async def start(self):
-        await super().start()
+        import asyncio as _asyncio
+        from pyrogram.errors import FloodWait as _FloodWait
+        for _attempt in range(5):
+            try:
+                await super().start()
+                break
+            except _FloodWait as fw:
+                wait = fw.value + 5
+                LOGGER(__name__).warning(
+                    f"Telegram FloodWait on bot auth — waiting {wait}s before retry "
+                    f"(attempt {_attempt + 1}/5)…"
+                )
+                await _asyncio.sleep(wait)
 
         me = await self.get_me()
 

@@ -1,0 +1,1 @@
+- [FloodWait handling](floodwait-handling.md) — repeated restarts trigger Telegram FloodWait on auth.ImportBotAuthorization; bot.py now retries automatically but avoid rapid restarts.
