@@ -14,6 +14,7 @@
 from pyrogram import Client
 import config
 from ..logging import LOGGER
+
 assistants = []
 assistantids = []
 
@@ -64,15 +65,15 @@ class Userbot(Client):
         except Exception as e:
             err_str = str(e)
             err_name = type(e).__name__
-            # AUTH_KEY_DUPLICATED — same session already running elsewhere (e.g. Railway + Replit)
+            # AUTH_KEY_DUPLICATED — same session already running elsewhere
             if "AuthKeyDuplicated" in err_name or "AUTH_KEY_DUPLICATED" in err_str:
                 LOGGER(__name__).warning(
                     f"{label}: AUTH_KEY_DUPLICATED — session is already active on another "
                     f"instance. Skipping this assistant. Stop the other instance or generate "
                     f"a fresh STRING_SESSION."
                 )
-                return False
-            LOGGER(__name__).error(f"{label} failed to start: {e}")
+            else:
+                LOGGER(__name__).error(f"{label} failed to start: {type(e).__name__}: {e}")
             return False
 
         try:
@@ -121,16 +122,19 @@ class Userbot(Client):
 
     async def stop(self):
         LOGGER(__name__).info("Stopping Assistants...")
-        try:
-            if config.STRING1:
-                await self.one.stop()
-            if config.STRING2:
-                await self.two.stop()
-            if config.STRING3:
-                await self.three.stop()
-            if config.STRING4:
-                await self.four.stop()
-            if config.STRING5:
-                await self.five.stop()
-        except Exception:
-            pass
+        pairs = [
+            (self.one,   1, config.STRING1),
+            (self.two,   2, config.STRING2),
+            (self.three, 3, config.STRING3),
+            (self.four,  4, config.STRING4),
+            (self.five,  5, config.STRING5),
+        ]
+        for client, number, string_val in pairs:
+            if not string_val:
+                continue
+            try:
+                await client.stop()
+            except Exception as e:
+                LOGGER(__name__).warning(
+                    f"Assistant {number} did not stop cleanly: {type(e).__name__}: {e}"
+                )

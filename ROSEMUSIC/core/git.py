@@ -38,6 +38,7 @@ def install_req(cmd: str) -> Tuple[str, str, int, int]:
 
     return asyncio.get_event_loop().run_until_complete(install_requirements())
 
+
 def git():
     REPO_LINK = config.UPSTREAM_REPO
     if config.GIT_TOKEN:
@@ -48,9 +49,9 @@ def git():
         UPSTREAM_REPO = config.UPSTREAM_REPO
     try:
         repo = Repo()
-        LOGGER(__name__).info(f"Git Client Found [VPS DEPLOYER]")
+        LOGGER(__name__).info("Git Client Found [VPS DEPLOYER]")
     except GitCommandError:
-        LOGGER(__name__).info(f"Invalid Git Command")
+        LOGGER(__name__).warning("Invalid Git command — skipping git init.")
     except InvalidGitRepositoryError:
         repo = Repo.init()
         if "origin" in repo.remotes:
@@ -68,8 +69,8 @@ def git():
         repo.heads[config.UPSTREAM_BRANCH].checkout(True)
         try:
             repo.create_remote("origin", config.UPSTREAM_REPO)
-        except BaseException:
-            pass
+        except Exception:
+            pass  # remote already exists — that's fine
         nrs = repo.remote("origin")
         nrs.fetch(config.UPSTREAM_BRANCH)
         try:
@@ -77,4 +78,4 @@ def git():
         except GitCommandError:
             repo.git.reset("--hard", "FETCH_HEAD")
         install_req("pip3 install --no-cache-dir -r requirements.txt")
-        LOGGER(__name__).info(f"Fetching updates from upstream repository...")
+        LOGGER(__name__).info("Fetched updates from upstream repository.")

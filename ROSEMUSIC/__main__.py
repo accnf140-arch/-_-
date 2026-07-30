@@ -1,5 +1,5 @@
 # -----------------------------------------------
-# SHUKLAMUSIC / DHRUV X RADHA Music Bot
+# SHUKLAMUSIC / ROSE X MUSIC Bot — entry point
 # -----------------------------------------------
 import asyncio
 import importlib
@@ -22,6 +22,7 @@ from SHUKLAMUSIC.plugins.sudo.clearcache import start_autoclear_scheduler
 async def _ping(request):
     return web.Response(text="OK")
 
+
 async def start_keepalive():
     """Start a lightweight HTTP server so the repl stays alive via pings."""
     _app = web.Application()
@@ -36,40 +37,42 @@ async def start_keepalive():
 
 
 async def init():
-    if (
-        not config.STRING1
-        and not config.STRING2
-        and not config.STRING3
-        and not config.STRING4
-        and not config.STRING5
-    ):
-        LOGGER(__name__).error("String Session Not Filled, Please Fill A Pyrogram Session")
-        exit()
+    if not any([config.STRING1, config.STRING2, config.STRING3,
+                config.STRING4, config.STRING5]):
+        LOGGER(__name__).error(
+            "No STRING_SESSION found. Please set STRING_SESSION in your environment variables."
+        )
+        raise SystemExit(1)
+
     await sudo()
+
+    # Pre-load ban lists into memory (failures are non-fatal)
     try:
-        users = await get_gbanned()
-        for user_id in users:
-            pass
-        users = await get_banned_users()
-        for user_id in users:
-            pass
-    except:
-        pass
+        await get_gbanned()
+        await get_banned_users()
+    except Exception as e:
+        LOGGER(__name__).warning(f"Could not load ban lists: {e}")
+
     await app.start()
+
     for all_module in ALL_MODULES:
         importlib.import_module("SHUKLAMUSIC.plugins" + all_module)
     LOGGER("SHUKLAMUSIC.plugins").info("All Features Loaded!")
+
     await register_bot_commands()
     await userbot.start()
     await SHUKLA.start()
+
+    # Optional startup stream in the log group (non-fatal if it fails)
     try:
         await SHUKLA.stream_call("https://te.legra.ph/file/29f784eb49d230ab62e9e.mp4")
     except NoActiveGroupCall:
-        LOGGER("SHUKLAMUSIC").error(
-            "No active voice chat in LOGGER_ID; continuing without startup audio."
+        LOGGER("SHUKLAMUSIC").warning(
+            "No active voice chat in LOGGER_ID — skipping startup audio."
         )
-    except:
-        pass
+    except Exception as e:
+        LOGGER("SHUKLAMUSIC").warning(f"Startup stream skipped: {type(e).__name__}: {e}")
+
     await SHUKLA.decorators()
     await initialize_vc_logger()
     start_autoclear_scheduler()

@@ -14,7 +14,7 @@
 
 import sys
 
-# Optional uvloop
+# Optional uvloop — faster event loop on Linux
 if sys.platform != "win32":
     try:
         import uvloop
@@ -52,6 +52,7 @@ class SHUKLA(Client):
         self.username = me.username or "None"
         self.mention = me.mention
 
+        # Send startup notification to the log group
         try:
             await self.send_message(
                 chat_id=config.LOGGER_ID,
@@ -62,39 +63,41 @@ class SHUKLA(Client):
                     f"ᴜsᴇʀɴᴀᴍᴇ : @{self.username}"
                 ),
             )
-
         except (errors.ChannelInvalid, errors.PeerIdInvalid):
             LOGGER(__name__).error(
-                "Bot cannot access LOGGER_ID. Add the bot to the log group/channel."
+                "Bot cannot access LOGGER_ID. Add the bot to the log group/channel first."
             )
             raise SystemExit(1)
-
         except Exception as ex:
             LOGGER(__name__).error(
-                f"Failed to access LOGGER_ID: {type(ex).__name__}: {ex}"
+                f"Failed to send startup message to LOGGER_ID: {type(ex).__name__}: {ex}"
             )
             raise SystemExit(1)
 
+        # Verify bot has admin rights in the log group
         try:
-            member = await self.get_chat_member(
-                config.LOGGER_ID,
-                self.id
-            )
-
+            member = await self.get_chat_member(config.LOGGER_ID, self.id)
             if member.status not in (
                 ChatMemberStatus.ADMINISTRATOR,
                 ChatMemberStatus.OWNER,
             ):
                 LOGGER(__name__).error(
-                    "Promote the bot as admin in LOGGER_ID."
+                    "Bot is not an admin in LOGGER_ID. Promote it to admin and restart."
                 )
                 raise SystemExit(1)
-
-        except Exception as ex:
+        except SystemExit:
+            raise
+        except (errors.ChatAdminRequired, errors.UserNotParticipant):
             LOGGER(__name__).error(
-                f"Failed checking admin status: {type(ex).__name__}: {ex}"
+                "Bot is not a member/admin of LOGGER_ID. Add it as admin and restart."
             )
             raise SystemExit(1)
+        except Exception as ex:
+            # get_chat_member can fail for broadcast channels — that's acceptable
+            LOGGER(__name__).warning(
+                f"Could not verify admin status in LOGGER_ID "
+                f"({type(ex).__name__}: {ex}) — continuing."
+            )
 
         LOGGER(__name__).info(
             f"Music Bot Started Successfully as {self.name}"
