@@ -53,7 +53,7 @@ search-engine-parser
 SpeechRecognition
 speedtest-cli
 spotipy
-stripe==10.7.0
+stripe==15.4.0
 telegraph
 telethon
 tgcrypto>=1.2.5
